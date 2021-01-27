@@ -1,3 +1,5 @@
+import random
+
 def menuChoice():
     print("Option 1: Display rules")
     print("Option 2: Start new game")
@@ -14,3 +16,27 @@ def displayRules():
     If the throw is a `double`, i.e. two 2s, two 3s, etc., \n \
     the player's score reverts to zero and their turn ends. \n \
     (etc.)")
+
+def playerTurn(player, score):
+    print("Your turn,", player)
+    anotherGo = "Y"
+    scoreThisTurn = 0
+    while (anotherGo == "Y" or anotherGo == "y"):
+        die1 = random.randint(1,6)
+        die2 = random.randint(1,6)
+        print("You rolled,", die1, "and", die2)
+        if (die1 == die2):
+            scoreThisTurn = 0
+            cumulativeScore = 0
+            anyKey = input("Bad luck! Press any key to continue: ")
+            anotherGo = "N"
+        else:
+            scoreThisTurn = scoreThisTurn + die1 + die2
+            cumulativeScore = score + scoreThisTurn
+            print("Your score this turn is", scoreThisTurn)
+            print(player, "Your cumulative score is", cumulativeScore)
+            if (cumulativeScore >= 50):
+                anotherGo = "N"
+            else:
+                anotherGo = input("Another go? (Answer 'Y' or 'N')")
+    return cumulativeScore
