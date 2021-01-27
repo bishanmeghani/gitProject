@@ -54,3 +54,14 @@ def playGame():
             score2 = playerTurn(player2, score2)
             if (score2 >= 50):
                 print("You win!")
+
+#main
+option = menuChoice()
+while (option != 3):
+    if (option == 1):
+        displayRules()
+        break
+    else:
+        playGame()
+        option = menuChoice()
+print("Goodbye!")
